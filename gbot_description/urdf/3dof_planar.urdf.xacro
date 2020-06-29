@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?> 
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="3dof_planar"> 
+  <xacro:include filename="$(find gbot_description)/urdf/3dof_planar.xacro" /> 
+  <xacro:include filename="$(find gbot_description)/urdf/3dof_planar.gazebo.xacro" /> 
+  <xacro:include filename="$(find gbot_description)/urdf/3dof_planar.transmission.xacro" /> 
+
+  <link name="world" />
+
+  <xacro:three_dof_planar_arm connected_to="world"/> 
+  <xacro:three_dof_planar_gazebo/> 
+  <xacro:three_dof_planar_transmission/> 
+
+</robot> 
+
