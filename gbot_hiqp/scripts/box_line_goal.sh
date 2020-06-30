@@ -2,11 +2,12 @@
 rosservice call /hiqp_joint_effort_controller/remove_tasks \
 "names:
 - 'full_pose'
-- 'ee_line_project'
 - 'ee_cage_left'
 - 'ee_cage_right'
 - 'ee_cage_back'
 - 'ee_cage_front'
+- 'line_project'
+- 'goal_project'
 "
 rosservice call /hiqp_joint_effort_controller/remove_all_primitives "{}"
 
@@ -30,7 +31,7 @@ rosservice call /hiqp_joint_effort_controller/set_primitives \
   type: 'point'
   frame_id: 'three_dof_planar_link2'
   visible: true
-  color: [0.0, 1.0, 0.3, 1.0]
+  color: [1.0, 0.0, 0.0, 1.0]
   parameters: [0.0, 0.0, 0.0]
 - name: back_plane
   type: plane
@@ -62,12 +63,12 @@ rosservice call /hiqp_joint_effort_controller/set_primitives \
   visible: true
   color: [0.0, 1.0, 0.0, 1.0]
   parameters: [0.5, -0.2, 0.05, 0.05]
-- name: 'line_constraint'
-  type: 'line'
+- name: 'j2plane'
+  type: 'plane'
   frame_id: 'world'
   visible: true
-  color: [1.0, 0.0, 0.0, 1.0]
-  parameters: [0.5, 0.5, 0.0, 0.0, 0.0, 0.05]
+  color: [1.0, 0.0, 0.0, 0.2]
+  parameters: [0.5, -0.5, 0.0, 0.0]
 "
 
 
@@ -107,7 +108,7 @@ rosservice call /hiqp_joint_effort_controller/set_tasks \
   visible: 1
   active: 1
   monitored: 1
-  def_params: ['TDefGeomProj', 'point', 'line', 'link2_point = line_constraint']
+  def_params: ['TDefGeomProj', 'point', 'plane', 'link2_point = j2plane']
   dyn_params: ['TDynPD', '0.5', '1.5']
 - name: 'goal_project'
   priority: 2
