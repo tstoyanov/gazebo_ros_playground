@@ -49,13 +49,13 @@ rosservice call /hiqp_joint_effort_controller/set_primitives \
   frame_id: world
   visible: false
   color: [0.2, 0.5, 0.2, 0.21]
-  parameters: [1.0, 0.0, 0.0, 0.8]
+  parameters: [1.0, 0.0, 0.0, -0.8]
 - name: right_plane
   type: plane
   frame_id: world
   visible: false
   color: [0.2, 0.5, 0.2, 0.21]
-  parameters: [1.0, 0.0, 0.0, -0.8]
+  parameters: [1.0, 0.0, 0.0, 0.8]
 - name: 'goal'
   type: 'point'
   frame_id: 'world'
@@ -87,22 +87,22 @@ rosservice call /hiqp_joint_effort_controller/set_tasks \
   visible: 1
   active: 1
   monitored: 1
-  def_params: ['TDefGeomProj', 'point', 'plane', 'ee_point < left_plane']
+  def_params: ['TDefGeomProj', 'point', 'plane', 'ee_point > left_plane']
   dyn_params: ['TDynPD', '1.0', '2.0']
 - name: 'ee_cage_right'
   priority: 0
   visible: 1
   active: 1
   monitored: 1
-  def_params: ['TDefGeomProj', 'point', 'plane', 'ee_point > right_plane']
+  def_params: ['TDefGeomProj', 'point', 'plane', 'ee_point < right_plane']
   dyn_params: ['TDynPD', '1.0', '2.0']
-- name: 'goal_project'
+- name: 'ee_rl'
   priority: 2
   visible: 1
   active: 1
   monitored: 1
-  def_params: ['TDefGeomProj', 'point', 'point', 'ee_point = goal']
-  dyn_params: ['TDynPD', '0.5', '1.5']
+  def_params: ['TDefRL2DSpace', '1','0','0', '0','1','0', 'ee_point']
+  dyn_params: ['TDynAsyncPolicy', '10.0', 'ee_rl/act', 'ee_rl/state', '/home/tsv/hiqp_logs/']
 - name: 'full_pose'
   priority: 3
   visible: 1
