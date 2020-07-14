@@ -1,4 +1,19 @@
 hiqp_joint_effort_controller:
+  hiqp_preload_geometric_primitives:
+   - name: 'eef_preload'
+     type: point
+     frame_id: 'three_dof_planar_eef'
+     visible: true
+     color: [1.0, 0.0, 0.0, 0.5]
+     parameters: [0.0, 0.0, 0.0]
+   - name: 'link_cyl'
+     type: cylinder
+     frame_id: 'three_dof_planar_link1'
+     visible: true
+     color: [1.0, 0.0, 0.0, 0.5]
+     parameters: [1.0, 0.0, 0.0, 0.0,0.0,0.0, 0.05, 0.5]
+
+  
   #####      JOINT LIMITATIONS    #####
   hiqp_preload_tasks:
    - name: 'jnt1_limits'
@@ -19,3 +34,9 @@ hiqp_joint_effort_controller:
      monitored: true
      def_params: ['TDefJntLimits','three_dof_planar_link3', '1.0', '2.0', '-1.9', '1.9'] 
      dyn_params: ['TDynPD', '1.0', '2.0']
+   - name: 'self_collide'
+     priority: 1
+     active: true
+     monitored: true
+     def_params: ['TDefGeomProj','point', 'cylinder', 'eef_preload > link_cyl'] 
+     dyn_params: ['TDynPD', '4.0', '4.5']
