@@ -1,7 +1,7 @@
 rosservice call /hiqp_joint_effort_controller/set_tasks \
 "tasks:
 - name: 'full_pose'
-  priority: 1
+  priority: 3
   visible: 1
   active: 1
   monitored: 1

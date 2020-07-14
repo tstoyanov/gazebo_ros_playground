@@ -69,28 +69,28 @@ rosservice call /hiqp_joint_effort_controller/set_primitives \
 rosservice call /hiqp_joint_effort_controller/set_tasks \
 "tasks:
 - name: 'ee_cage_front'
-  priority: 0
+  priority: 1
   visible: 1
   active: 1
   monitored: 1
   def_params: ['TDefGeomProj', 'point', 'plane', 'ee_point < front_plane']
   dyn_params: ['TDynPD', '1.0', '2.0']
 - name: 'ee_cage_back'
-  priority: 0
+  priority: 1
   visible: 1
   active: 1
   monitored: 1
   def_params: ['TDefGeomProj', 'point', 'plane', 'ee_point > back_plane']
   dyn_params: ['TDynPD', '1.0', '2.0']
 - name: 'ee_cage_left'
-  priority: 0
+  priority: 1
   visible: 1
   active: 1
   monitored: 1
   def_params: ['TDefGeomProj', 'point', 'plane', 'ee_point > left_plane']
   dyn_params: ['TDynPD', '1.0', '2.0']
 - name: 'ee_cage_right'
-  priority: 0
+  priority: 1
   visible: 1
   active: 1
   monitored: 1
