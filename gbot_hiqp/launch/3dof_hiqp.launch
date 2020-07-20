@@ -24,6 +24,7 @@
 
     <!-- Load joint controller configurations from YAML file to parameter server -->
     <rosparam file="$(find gbot_hiqp)/config/controllers.yaml" command="load"/>
+    <!--rosparam file="$(find gbot_hiqp)/config/preload.yaml" command="load"/-->
     <rosparam file="$(find gbot_hiqp)/config/preload.yaml" command="load"/>
 
     <!-- load the controllers -->

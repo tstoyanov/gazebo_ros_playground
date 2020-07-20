@@ -102,7 +102,7 @@ rosservice call /hiqp_joint_effort_controller/set_tasks \
   active: 1
   monitored: 1
   def_params: ['TDefRL2DSpace', '1','0','0', '0','1','0', 'ee_point']
-  dyn_params: ['TDynAsyncPolicy', '10.0', 'ee_rl/act', 'ee_rl/state', '/home/tsv/hiqp_logs/']
+  dyn_params: ['TDynAsyncPolicy', '10.0', 'ee_rl/act', 'ee_rl/state']
 - name: 'full_pose'
   priority: 3
   visible: 1

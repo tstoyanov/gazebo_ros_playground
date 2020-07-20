@@ -20,19 +20,19 @@ hiqp_joint_effort_controller:
      active: true
      monitored: true
      priority: 0
-     def_params: ['TDefJntLimits','three_dof_planar_link1', '1.0', '2.0', '-1.9', '1.9'] 
+     def_params: ['TDefJntLimits','three_dof_planar_link1', '1.5', '2.5', '-1.9', '1.9'] 
      dyn_params: ['TDynPD', '1.0', '2.0']
    - name: 'jnt2_limits'
      active: true
      monitored: true
      priority: 0
-     def_params: ['TDefJntLimits','three_dof_planar_link2', '1.0', '2.0', '-1.9', '1.9'] 
+     def_params: ['TDefJntLimits','three_dof_planar_link2', '1.5', '2.5', '-1.9', '1.9'] 
      dyn_params: ['TDynPD', '1.0', '2.0']
    - name: 'jnt3_limits'
      priority: 0
      active: true
      monitored: true
-     def_params: ['TDefJntLimits','three_dof_planar_link3', '1.0', '2.0', '-1.9', '1.9'] 
+     def_params: ['TDefJntLimits','three_dof_planar_link3', '1.5', '2.5', '-1.9', '1.9'] 
      dyn_params: ['TDynPD', '1.0', '2.0']
    - name: 'self_collide'
      priority: 1
