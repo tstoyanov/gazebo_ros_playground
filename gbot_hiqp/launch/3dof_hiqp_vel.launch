@@ -9,7 +9,7 @@
     <arg name="debug" default="false"/>
     
     <!-- load robot description from xacro file -->
-    <param name="robot_description" command="$(find xacro)/xacro $(find gbot_description)/urdf/3dof_planar.urdf.xacro"/>
+    <param name="robot_description" command="$(find xacro)/xacro $(find gbot_description)/urdf/3dof_planar_vel.urdf.xacro"/>
 
     <!--launch GAZEBO with own world configuration -->
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -20,7 +20,7 @@
         <arg name="headless" value="$(arg headless)"/>
     </include>
 
-    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model three_dof_planar -J three_dof_planar_joint1 -1.6 -J three_dof_planar_joint2 -1.3 -J three_dof_planar_joint3 -0.3"/>
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model three_dof_planar -J three_dof_planar_joint1 0.3 -J three_dof_planar_joint2 -0.3 -J three_dof_planar_joint3 -0.25"/>
 
     <!-- Load joint controller configurations from YAML file to parameter server -->
     <rosparam file="$(find gbot_hiqp)/config/controllers.yaml" command="load"/>
@@ -28,8 +28,8 @@
     <rosparam file="$(find gbot_hiqp)/config/preload.yaml" command="load"/>
 
     <!-- load the controllers -->
-    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="joint_state_controller hiqp_joint_effort_controller" />
-    <node name="controller_spawner_stopped" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="--stopped position_joint_trajectory_controller effort_controller" />
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="joint_state_controller hiqp_joint_velocity_controller" />
+    <node name="controller_spawner_stopped" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="--stopped velocity_joint_trajectory_controller" />
 
 
     <!-- convert joint states to TF transforms for rviz, etc -->

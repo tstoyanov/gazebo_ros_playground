@@ -61,7 +61,7 @@ rosservice call /hiqp_joint_effort_controller/set_primitives \
   frame_id: 'world'
   visible: true
   color: [0.0, 1.0, 0.0, 1.0]
-  parameters: [0.5, -0.2, 0.05]
+  parameters: [-0.2, -0.5, 0.05]
 "
 
 
@@ -96,19 +96,12 @@ rosservice call /hiqp_joint_effort_controller/set_tasks \
   monitored: 1
   def_params: ['TDefGeomProj', 'point', 'plane', 'ee_point < right_plane']
   dyn_params: ['TDynPD', '1.0', '2.0']
-- name: 'ee_rl'
-  priority: 2
-  visible: 1
-  active: 1
-  monitored: 1
-  def_params: ['TDefRL2DSpace', '1','0','0', '0','1','0', 'ee_point']
-  dyn_params: ['TDynAsyncPolicy', '10.0', 'ee_rl/act', 'ee_rl/state']
 - name: 'full_pose'
   priority: 3
   visible: 1
   active: 1
   monitored: 0
-  def_params: ['TDefFullPose', '0.2', '-1.3', '0.3']
+  def_params: ['TDefFullPose', '-1.6', '-1.3', '-0.25']
   dyn_params: ['TDynPD', '0.5', '1.5']
 "
 
